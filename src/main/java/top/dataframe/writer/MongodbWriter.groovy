@@ -43,11 +43,8 @@ class MongodbWriter implements DataFrameWriter {
 
             List<WriteModel<Document>> writeModelList = df.rows.collect {
                 Object id = it.remove("_id")
-                String filter = """ {"_id":$id} """.trim().toString()
-                println filter
+                String filter = new JsonOutput().toJson(["_id": id])
                 String content = """ {"\$set": ${new JsonOutput().toJson(it)}} """
-                println content
-
                 new UpdateOneModel<Document>(
                         Document.parse(filter), Document.parse(content), new UpdateOptions().upsert(true)
                 ) as WriteModel
