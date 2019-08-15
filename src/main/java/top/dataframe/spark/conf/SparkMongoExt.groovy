@@ -23,6 +23,7 @@ class SparkMongoExt implements SparkConfExt {
                 .set("spark.mongodb.output.uri", "mongodb://$username:$password@$ipAndPort/admin")
                 .set("spark.mongodb.input.database", db)
                 .set("spark.mongodb.output.database", db)
+                .set("spark.mongodb.input.collection", "")
 
 //                .config("spark.mongodb.input.collection", "")
     }
