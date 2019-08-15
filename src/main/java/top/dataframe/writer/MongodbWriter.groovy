@@ -15,7 +15,7 @@ import top.dataframe.DataFrame
 import top.dataframe.val.MongoInfoKey
 
 @CompileStatic
-class MongodbWriter implements DataFrameWriter {
+class MongodbWriter implements DataFrameWriter, Serializable{
     private Map<String, Object> mongoInfo
     private String collection
 
